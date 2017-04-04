@@ -2,12 +2,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from blog.models import Article
+from datetime import datetime
 
 # Create your views here.
-def home(request):
-    return HttpResponse("Hello World, Django")
 
-def detail(request, my_args):
-    post = Article.objects.all()[int(my_args)]
-    str = ("title = %s, category = %s, created_time = %s, body = %s" % (post.title, post.category, post.created_time, post.body))
-    return HttpResponse(str)
+def home(request):
+    post_list = Article.objects.all()  #获取全部的Article对象
+    return render(request, 'home.html', {'post_list' : post_list})

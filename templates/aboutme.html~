@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load djangomarkdown %}
+{% block content %}
+<div class="posts">
+        <p> About Me ... </p>
+</div><!-- /.blog-post -->
+{% endblock %}

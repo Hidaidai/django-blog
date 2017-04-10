@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+<div class="posts">
+    {% for post in post_list %}
+        <section class="post">
+            <header class="post-header">
+                    <p class="post-meta">
+                        Time: {{ post.created_time |date:"Y /m /d"}} : </a> 
+                        <a href="{% url "detail" id=post.id %}">{{ post.title }}</a>
+                    </p>
+            </header>
+        </section>
+    {% endfor %}
+</div><!-- /.blog-post -->
+{% endblock %}

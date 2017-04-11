@@ -2,6 +2,7 @@
 from django.contrib import admin
 from blog.models import Article
 from blog.models import Category
+from blog.models import Tag
 #从blog的models类中引入Article类
 import sys;
 reload(sys);
@@ -11,3 +12,4 @@ sys.setdefaultencoding("utf8")
 # Register your models here.
 admin.site.register(Article)
 admin.site.register(Category)
+admin.site.register(Tag)

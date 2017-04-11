@@ -2,11 +2,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from blog.models import Article
+from blog.models import Category
+from blog.models import Tag
 from datetime import datetime
 from markdown import markdown
 from django.http import Http404
 
 # Create your views here.
+
+#模板页面，显示标签和分类
+def model(request):
+    tag_list = Tag.objects.all()
+    return render(request, 'base.html', {'tag_list' : tag_list})
 
 #主页逻辑，显示博文列表
 def home(request):
@@ -32,3 +39,16 @@ def archives(request) :
     except Article.DoesNotExist :
         raise Http404
     return render(request, 'archives.html', {'post_list' : post_list, 'error' : False})
+
+#关于“标签”搜索页面的
+def search_tag(request, tag) :
+    try:
+        post_list = Article.objects.filter(category__iexact = tag) #contains
+    except Article.DoesNotExist :
+        raise Http404
+    return render(request, 'tag.html', {'post_list' : post_list})
+
+
+
+
+

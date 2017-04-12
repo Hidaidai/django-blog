@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {% load custom_markdown %}
 {% block content %}
@@ -11,6 +12,9 @@
             <h2 class="brand-tagline">A problem is a chance to do your best！</h2>
             <nav class="nav">
                 <ul class="nav-list">
+                    <li><a href="" title=""
+                                   rel="category">{{ model.category.name }}</a>
+                    </li>
                     <li class="nav-item">
                         <a class="pure-button" href="https://github.com/hidaidai">Github</a>
                     </li>
@@ -31,7 +35,7 @@
                    <ul>
             {% for category in category_list %}
                        <li class="cat-item">
-                        <a href="{% url 'search_category' category=category.name %}">{{ category.name }}</a>
+                        <a href="#">    {{ category.name }}</a>
                        </li>
             {% endfor %}
                   </ul>
@@ -66,29 +70,20 @@
                 </div>
             </div>
 <!--复用主体-超重要-->
-<div class="posts">
+  <div class="blog-post">
     {% for post in post_list %}
-        <section class="post">
-            <header class="post-header">
-                <h2 class="post-title">
-                            <a href="{% url 'detail' id=post.id %}" style="color:rgba(38, 31, 31, 0.75)">{{ post.title }}</a></h2>
-                            <p class="post-meta">
-                                                               时间:<a class="post-author">{{ post.created_time|date:"Y /m /d" }}</a> 
-                                                               分类:<a class="post-category post-category-js" href="{% url 'search_category' category=post.category %}">{{ post.category }}</a>
-                                                               标签:
-                          {% for tag in post.tag.all %}
-                            <a class="post-category post-category-pure" href="#">{{ tag }}</a>
-                          {% endfor %}
-                    </p>
-            </header>
-                <div class="post-description">
-                    <p>
-        {{ post.abstract|custom_markdown }}
-                    </p>
-                </div>
-        </section>
+      <h2 class="blog-post-title"><a href="{% url 'detail' id=post.id %}">{{ post.title }}</a></h2>
+        <p class="blog-post-meta">
+          发布：<a class="btn btn-xs btn-info">{{ post.date_time | date:'Y/m/d' }}</a>&nbsp&nbsp
+          目录：<a class="btn btn-xs btn-info" href="{% url 'search_tag' post.category %}">{{ post.category | title}}</a>&nbsp&nbsp
+          标签：
+          {% for tag in post.tag.all %}
+            <a class="btn btn-xs btn-info" href="">{{ tag }}</a></p>
+          {% endfor %}
+        </p>
+        <br />
     {% endfor %}
-</div>
+  </div><!-- /.blog-post -->
 <!--复用主体-超重要-->
         </div>
     </div>

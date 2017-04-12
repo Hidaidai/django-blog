@@ -191,8 +191,8 @@ h3 {
     padding: 1em 0;
 }
 .footer a {
-    color: #ccc;
-    font-size: 80%;
+    color: #000000;
+    font-size: 120%;
 }
 .footer .pure-menu a:hover,
 .footer .pure-menu a:focus {
@@ -206,7 +206,7 @@ h3 {
     }
 
     .header {
-        margin: 80% 2em 0;
+        margin: 10% 2em 0;
         text-align: right;
     }
 

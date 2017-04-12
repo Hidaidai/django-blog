@@ -11,9 +11,6 @@
             <h2 class="brand-tagline">A problem is a chance to do your best！</h2>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="" title=""
-                                   rel="category">{{ model.category.name }}</a>
-                    </li>
                     <li class="nav-item">
                         <a class="pure-button" href="https://github.com/hidaidai">Github</a>
                     </li>
@@ -34,7 +31,7 @@
                    <ul>
             {% for category in category_list %}
                        <li class="cat-item">
-                        <a href="#">    {{ category.name }}</a>
+                        <a href="{% url 'search_category' category=category.name %}">    {{ category.name }}</a>
                        </li>
             {% endfor %}
                   </ul>
